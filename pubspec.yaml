@@ -1,0 +1,404 @@
+name: myapp
+description: A exported flutter project from FUNCTION12
+
+
+# The following line prevents the package from being accidentally published to
+# pub.dev using `flutter pub publish`. This is preferred for private packages.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+# The following defines the version and build number for your application.
+# A version number is three numbers separated by dots, like 1.2.43
+# followed by an optional build number separated by a +.
+# Both the version and the builder number may be overridden in flutter
+# build by specifying --build-name and --build-number, respectively.
+# In Android, build-name is used as versionName while build-number used as versionCode.
+# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
+# In iOS, build-name is used as CFBundleShortVersionString while build-number is used as CFBundleVersion.
+# Read more about iOS versioning at
+# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
+# In Windows, build-name is used as the major, minor, and patch parts
+# of the product and file versions while build-number is used as the build suffix.
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.18.1 <3.0.0'
+
+# Dependencies specify other packages that your package needs in order to work.
+# To automatically upgrade your package dependencies to the latest versions
+# consider running `flutter pub upgrade --major-versions`. Alternatively,
+# dependencies can be manually updated by changing the version numbers below to
+# the latest version available on pub.dev. To see which dependencies have newer
+# versions available, run `flutter pub outdated`.
+dependencies:
+  flutter:
+    sdk: flutter
+
+
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  cupertino_icons: ^1.0.2
+  google_fonts: ^3.0.1
+  carousel_slider: ^4.1.1
+  awesome_snackbar_content: ^0.1.0
+  flutter_launcher_icons:
+  pinput: ^2.2.21
+  flutter_onboarding_slider: ^1.0.9
+
+  #design pattern
+  equatable:
+  dartz:
+  get_it: ^7.2.0
+  flutter_bloc: ^8.1.1
+  bloc: ^8.1.0
+  get:
+
+  #loading
+  shimmer: ^2.0.0
+  flutter_spinkit: ^5.1.0
+
+  #firebase
+  firebase_core: ^2.3.0 #1.6.0
+  firebase_auth: ^4.1.4 #3.1.1
+  firebase_auth_platform_interface:
+
+  #  #authentication
+  #  flutter_facebook_auth: ^5.0.6
+  #  google_sign_in: ^5.4.2
+
+  #networking
+  http:
+  data_connection_checker:
+  cached_network_image: ^3.2.3
+
+  #maps
+  google_maps_flutter:
+
+  #helpers
+  shared_preferences: ^2.0.7
+  flutter_svg: ^1.1.5
+  url_launcher: ^6.1.5
+  onesignal_flutter: ^3.5.0
+  image_picker: ^0.8.6
+  timer_count_down: ^2.2.1
+  launch_review: ^3.0.1
+  flutter_local_notifications: ^13.0.0
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  # The "flutter_lints" package below contains a set of recommended lints to
+  # encourage good coding practices. The lint set provided by the package is
+  # activated in the `analysis_options.yaml` file located at the root of your
+  # package. See that file for information about deactivating specific lint
+  # rules and activating additional ones.
+  flutter_lints: ^2.0.0
+
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+
+# The following section is specific to Flutter packages.
+flutter:
+
+  # The following line ensures that the Material Icons font is
+  # included with your application, so that you can use the icons in
+  # the material Icons class.
+  uses-material-design: true
+
+  # To add assets to your application, add an assets section, like this:
+  # assets:
+  #   - images/a_dot_burr.jpeg
+  #   - images/a_dot_ham.jpeg
+  assets:
+    - assets/page-1/images/image-1.png
+    - assets/page-1/images/star-filled-24x241x-4.png
+    - assets/page-1/images/batterystd.png
+    - assets/page-1/images/star-filled-24x241x-4-WMR.png
+    - assets/page-1/images/main-picture-bg.png
+    - assets/page-1/images/main-picture-bg-zzF.png
+    - assets/page-1/images/ellipse-2-1Ab.png
+    - assets/page-1/images/vector-1.png
+    - assets/page-1/images/favoritefill.png
+    - assets/page-1/images/unsplash-exfdowkybqw-bg.png
+    - assets/page-1/images/main-picture-bg-wNT.png
+    - assets/page-1/images/rectangle-9.png
+    - assets/page-1/images/ellipse-2.png
+    - assets/page-1/images/line-23.png
+    - assets/page-1/images/signalwifistatusbar4bar.png
+    - assets/page-1/images/expandright.png
+    - assets/page-1/images/checkring.png
+    - assets/page-1/images/auto-group-jxab.png
+    - assets/page-1/images/batterystd-VeB.png
+    - assets/page-1/images/chevron-right-button.png
+    - assets/page-1/images/signalwifistatusbar4bar-tB5.png
+    - assets/page-1/images/rectangle-792.png
+    - assets/page-1/images/line-22.png
+    - assets/page-1/images/trailing-icon.png
+    - assets/page-1/images/unsplash-exfdowkybqw-bg-mej.png
+    - assets/page-1/images/line-24.png
+    - assets/page-1/images/star-filled-24x241x-4-Zbq.png
+    - assets/page-1/images/menu.png
+    - assets/page-1/images/leading-icon.png
+    - assets/page-1/images/auto-group-glbu.png
+    - assets/page-1/images/search.png
+    - assets/page-1/images/camera.png
+    - assets/page-1/images/favoritefill-nKu.png
+    - assets/page-1/images/checkring-pzf.png
+    - assets/page-1/images/star-filled-24x241x-1.png
+    - assets/page-1/images/trailing-icon-kz7.png
+    - assets/page-1/images/star-filled-24x241x-4-tVH.png
+    - assets/page-1/images/expandright-t1R.png
+    - assets/page-1/images/signalcellular4bar.png
+    - assets/page-1/images/star-filled-24x241x-1-JyZ.png
+    - assets/page-1/images/localoffer.png
+    - assets/page-1/images/star-filled-24x241x-2.png
+    - assets/page-1/images/leading-icon-787.png
+    - assets/page-1/images/favoritefill-Qi7.png
+    - assets/page-1/images/star-filled-24x241x-1-ojZ.png
+    - assets/page-1/images/union.png
+    - assets/page-1/images/camera-Ywu.png
+    - assets/page-1/images/star-filled-24x241x-2-2s5.png
+    - assets/page-1/images/main-picture-bg-XzB.png
+    - assets/page-1/images/auto-group-h1tx.png
+    - assets/page-1/images/auto-group-gbm5.png
+    - assets/page-1/images/star-filled-24x241x-3.png
+    - assets/page-1/images/chevron-left-button.png
+    - assets/page-1/images/auto-group-eakv.png
+    - assets/page-1/images/vector-1-ELb.png
+    - assets/page-1/images/star-filled-24x241x-1-baT.png
+    - assets/page-1/images/main-picture-bg-nMR.png
+    - assets/page-1/images/line-25.png
+    - assets/page-1/images/menu-4fd.png
+    - assets/page-1/images/main-picture-bg-Gh9.png
+    - assets/page-1/images/top-app-bar.png
+    - assets/page-1/images/unsplash-exfdowkybqw-bg-gNo.png
+    - assets/page-1/images/trailing-icon-LT5.png
+    - assets/page-1/images/union-C3M.png
+    - assets/page-1/images/ellipse-8-stroke.png
+    - assets/page-1/images/auto-group-wmxy.png
+    - assets/page-1/images/vector-1-K3R.png
+    - assets/page-1/images/star-filled-24x241x-2-X4F.png
+    - assets/page-1/images/checkfill.png
+    - assets/page-1/images/vector-1-GWw.png
+    - assets/page-1/images/checkring-Dns.png
+    - assets/page-1/images/favoritefill-ER1.png
+    - assets/page-1/images/favoritefill-FbZ.png
+    - assets/page-1/images/signalwifistatusbar4bar-77y.png
+    - assets/page-1/images/star-filled-24x241x-3-Af5.png
+    - assets/page-1/images/star-filled-24x241x-3-Vas.png
+    - assets/page-1/images/star-filled-24x241x-3-ovK.png
+    - assets/page-1/images/batterystd-cGj.png
+    - assets/page-1/images/expandright-Hnj.png
+    - assets/page-1/images/signalcellular4bar-BdD.png
+    - assets/page-1/images/unsplash-exfdowkybqw-bg-zyy.png
+    - assets/page-1/images/trailing-icon-xjm.png
+    - assets/page-1/images/trailing-icon-Ps1.png
+    - assets/page-1/images/main-picture-bg-P1d.png
+    - assets/page-1/images/checkringroundduotone.png
+    - assets/page-1/images/signalcellular4bar-KnK.png
+    - assets/page-1/images/line-25-KeT.png
+    - assets/page-1/images/auto-group-x3dv.png
+    - assets/page-1/images/search-kbm.png
+    - assets/page-1/images/checkring-vef.png
+    - assets/page-1/images/ellipse-2-DAK.png
+    - assets/page-1/images/auto-group-ckd5.png
+    - assets/page-1/images/subtract.png
+    - assets/page-1/images/expandright-Kuu.png
+    - assets/page-1/images/checkfill-6H1.png
+    - assets/page-1/images/map-1-bg.png
+    - assets/page-1/images/union-JYj.png
+    - assets/page-1/images/main-picture-bg-XeB.png
+    - assets/page-1/images/union-YGK.png
+    - assets/page-1/images/camera-np3.png
+    - assets/page-1/images/trailing-icon-aB5.png
+    - assets/page-1/images/ellipse-2-faT.png
+    - assets/page-1/images/star-filled-24x241x-2-7hu.png
+    - assets/page-1/images/toggle-star24px.png
+    - assets/page-1/images/star-filled-24x241x-2-ZZV.png
+    - assets/page-1/images/auto-group-gy5z.png
+    - assets/page-1/images/unsplash-exfdowkybqw-bg-kfd.png
+    - assets/page-1/images/auto-group-vl4b.png
+    - assets/page-1/images/checkring-fqD.png
+    - assets/page-1/images/toggle-star24px-igb.png
+    - assets/page-1/images/right-icons.png
+    - assets/page-1/images/main-picture-bg-mvb.png
+    - assets/page-1/images/twitter-logo.png
+    - assets/page-1/images/thumbdown.png
+    - assets/page-1/images/toggle-star24px-LQj.png
+    - assets/page-1/images/menu-buttons-frame.png
+    - assets/page-1/images/signalcellular4bar-kH9.png
+    - assets/page-1/images/star-filled-24x241x-4-3Sb.png
+    - assets/page-1/images/thumbup.png
+    - assets/page-1/images/expandleft.png
+    - assets/page-1/images/phonelight.png
+    - assets/page-1/images/cloudaltlight.png
+    - assets/page-1/images/chevron-right-button-YTM.png
+    - assets/page-1/images/unsplash-pibrawhb4h8-bg.png
+    - assets/page-1/images/expandright-rYs.png
+    - assets/page-1/images/rectangle-796-bg.png
+    - assets/page-1/images/unsplash-exfdowkybqw-bg-pPm.png
+    - assets/page-1/images/pinaltlight.png
+    - assets/page-1/images/camera-eqq.png
+    - assets/page-1/images/signalwifistatusbar4bar-Tzb.png
+    - assets/page-1/images/chevron-left-button-QFm.png
+    - assets/page-1/images/trailing-icon-2XM.png
+    - assets/page-1/images/line-25-65H.png
+    - assets/page-1/images/expandright-YAf.png
+    - assets/page-1/images/timelight.png
+    - assets/page-1/images/union-DVd.png
+    - assets/page-1/images/facebook-logo.png
+    - assets/page-1/images/vector-1-PYw.png
+    - assets/page-1/images/union-JdH.png
+    - assets/page-1/images/expandright-UoD.png
+    - assets/page-1/images/batterystd-Bf1.png
+    - assets/page-1/images/ellipse-2-Hxw.png
+    - assets/page-1/images/unsplash-425b2phnuha-bg.png
+    - assets/page-1/images/unsplash-xeaaoiznfv8-bg.png
+    - assets/page-1/images/vector-1-BBh.png
+    - assets/page-1/images/ellipse-2-Tf1.png
+    - assets/page-1/images/union-MdD.png
+    - assets/page-1/images/assets-youtube-images-avator.png
+    - assets/page-1/images/expandright-7e3.png
+    - assets/page-1/images/unsplash-owwbuoibhdy-bg.png
+    - assets/page-1/images/rectangle-15-bg.png
+    - assets/page-1/images/line-25-st7.png
+    - assets/page-1/images/facebook-original.png
+    - assets/page-1/images/unsplash-qi9goop1wjo-bg.png
+    - assets/page-1/images/image-1-PxF.png
+    - assets/page-1/images/unsplash-5p8mxpqzcqo-bg.png
+    - assets/page-1/images/twitter-logo-suM.png
+    - assets/page-1/images/unsplash-ucurndvvglu-bg.png
+    - assets/page-1/images/union-Rhu.png
+    - assets/page-1/images/unsplash-pibrawhb4h8-bg-JQK.png
+    - assets/page-1/images/map.png
+    - assets/page-1/images/ellipse-2-XhV.png
+    - assets/page-1/images/menu-nom.png
+    - assets/page-1/images/chevron-left-button-B7R.png
+    - assets/page-1/images/trailing-icon-d1u.png
+    - assets/page-1/images/union-Xd5.png
+    - assets/page-1/images/rectangle-9-GHy.png
+    - assets/page-1/images/infoaltlight.png
+    - assets/page-1/images/localoffer-kno.png
+    - assets/page-1/images/unsplash-xeaaoiznfv8-bg-Y1Z.png
+    - assets/page-1/images/vector-1-7zs.png
+    - assets/page-1/images/unsplash-t5pl6cien-i-bg.png
+    - assets/page-1/images/layerslight.png
+    - assets/page-1/images/chevron-right-button-u8X.png
+    - assets/page-1/images/downloadcirclelight.png
+    - assets/page-1/images/union-s4w.png
+    - assets/page-1/images/main-picture.png
+    - assets/page-1/images/messagelight.png
+    - assets/page-1/images/main-picture-ihZ.png
+    - assets/page-1/images/rectangle-792-LwD.png
+    - assets/page-1/images/rectangle-792-orj.png
+    - assets/page-1/images/star-filled-24x241x-4-pTd.png
+    - assets/page-1/images/vector-1-86F.png
+    - assets/page-1/images/pinaltlight-EYK.png
+    - assets/page-1/images/star-filled-24x241x-4-89Z.png
+    - assets/page-1/images/main-picture-BSb.png
+    - assets/page-1/images/ellipse-2-NGK.png
+    - assets/page-1/images/auto-group-2urb.png
+    - assets/page-1/images/star-filled-24x241x-1-Dej.png
+    - assets/page-1/images/star-filled-24x241x-3-96s.png
+    - assets/page-1/images/star-filled-24x241x-2-imZ.png
+    - assets/page-1/images/star-filled-24x241x-4-goV.png
+    - assets/page-1/images/main-picture-MUF.png
+    - assets/page-1/images/chatpluslight.png
+    - assets/page-1/images/main-picture-iSX.png
+    - assets/page-1/images/app-bars.png
+    - assets/page-1/images/menu-fZD.png
+    - assets/page-1/images/chatpluslight-2c3.png
+    - assets/page-1/images/star-filled-24x241x-1-fcX.png
+    - assets/page-1/images/star-filled-24x241x-2-Hhd.png
+    - assets/page-1/images/main-picture-4yH.png
+    - assets/page-1/images/main-picture-FvT.png
+    - assets/page-1/images/chevron-right-button-JZ9.png
+    - assets/page-1/images/auto-group-3rb5.png
+    - assets/page-1/images/main-picture-74X.png
+    - assets/page-1/images/unsplash-sbjvthvw2x8.png
+    - assets/page-1/images/star-filled-24x241x-3-W5H.png
+    - assets/page-1/images/chatpluslight-4Kd.png
+    - assets/page-1/images/notification-icon.png
+    - assets/page-1/images/star-filled-24x241x-1-Dvb.png
+    - assets/page-1/images/star-filled-24x241x-2-Wj5.png
+    - assets/page-1/images/star-filled-24x241x-3-TCw.png
+    - assets/page-1/images/auto-group-tsk9.png
+    - assets/page-1/images/localoffer-bud.png
+    - assets/page-1/images/rectangle-9-jJB.png
+    - assets/page-1/images/star-filled-24x241x-4-8Wf.png
+    - assets/page-1/images/star-filled-24x241x-3-1Qo.png
+    - assets/page-1/images/chevron-left-button-dsR.png
+    - assets/page-1/images/star-filled-24x241x-2-hzK.png
+    - assets/page-1/images/auto-group-cl51.png
+    - assets/page-1/images/main-picture-bg-1Bq.png
+    - assets/page-1/images/main-picture-bg-M87.png
+    - assets/page-1/images/star-filled-24x241x-1-7D5.png
+    - assets/page-1/images/main-picture-bg-U1h.png
+    - assets/page-1/images/auto-group-ycao.png
+    - assets/page-1/images/main-picture-bg-5Xh.png
+    - assets/page-1/images/main-picture-bg-1Zu.png
+    - assets/page-1/images/main-picture-bg-ss1.png
+    - assets/page-1/images/search-ag3.png
+    - assets/page-1/images/main-picture-bg-uzs.png
+    - assets/page-1/images/closeround.png
+    - assets/page-1/images/signalwifistatusbar4bar-kYT.png
+    - assets/page-1/images/closeround-MMV.png
+    - assets/page-1/images/signalcellular4bar-buM.png
+    - assets/page-1/images/closeround-jNb.png
+    - assets/page-1/images/filteralt.png
+    - assets/page-1/images/ellipse-839.png
+    - assets/page-1/images/vector-1-bxF.png
+    - assets/page-1/images/expandright-inF.png
+    - assets/page-1/images/closeround-wrT.png
+    - assets/page-1/images/ellipse-2-EM1.png
+    - assets/page-1/images/union-ZbZ.png
+    - assets/page-1/images/main-picture-bg-kPu.png
+    - assets/page-1/images/camera-4jd.png
+    - assets/page-1/images/filteralt-d8P.png
+    - assets/page-1/images/toggle-star24px-GVH.png
+    - assets/page-1/images/batterystd-aiF.png
+    - assets/page-1/images/toggle-star24px-W3V.png
+    - assets/page-1/images/toggle-star24px-LR1.png
+    - assets/page-1/images/auto-group-htbv.png
+    - assets/page-1/images/toggle-star24px-Ets.png
+    - assets/page-1/images/ellipse-839-7F1.png
+    - assets/page-1/images/auto-group-w11u.png
+    - assets/page-1/images/toggle-star24px-6Wf.png
+    - assets/page-1/images/toggle-star24px-FF1.png
+    - assets/page-1/images/auto-group-cq3z.png
+    - assets/page-1/images/auto-group-krhy.png
+    - assets/page-1/images/ellipse-839-eYK.png
+    - assets/page-1/images/toggle-star24px-oLX.png
+    - assets/page-1/images/toggle-star24px-hZV.png
+    - assets/page-1/images/toggle-star24px-KJb.png
+    - assets/page-1/images/toggle-star24px-GAP.png
+    - assets/page-1/images/toggle-star24px-wtf.png
+    - assets/page-1/images/ellipse-839-9DV.png
+    - assets/page-1/images/toggle-star24px-D4F.png
+
+  # An image asset can refer to one or more resolution-specific "variants", see
+  # https://flutter.dev/assets-and-images/#resolution-aware
+
+  # For details regarding adding assets from package dependencies, see
+  # https://flutter.dev/assets-and-images/#from-packages
+
+  # To add custom fonts to your application, add a fonts section here,
+  # in this "flutter" section. Each entry in this list should have a
+  # "family" key with the font family name, and a "fonts" key with a
+  # list giving the asset and other descriptors for the font. For
+  # example:
+  # fonts:
+  #   - family: Schyler
+  #     fonts:
+  #       - asset: fonts/Schyler-Regular.ttf
+  #       - asset: fonts/Schyler-Italic.ttf
+  #         style: italic
+  #   - family: Trajan Pro
+  #     fonts:
+  #       - asset: fonts/TrajanPro.ttf
+  #       - asset: fonts/TrajanPro_Bold.ttf
+  #         weight: 700
+  #
+  # For details regarding fonts from package dependencies,
+  # see https://flutter.dev/custom-fonts/#from-packages
