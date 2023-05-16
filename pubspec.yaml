@@ -82,6 +82,8 @@ dependencies:
   timer_count_down: ^2.2.1
   launch_review: ^3.0.1
   flutter_local_notifications: ^13.0.0
+  shrink_sidemenu: ^2.0.0+2-null-safety
+
 
 
 dev_dependencies:

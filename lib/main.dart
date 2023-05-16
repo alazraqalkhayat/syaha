@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:myapp/fetures/users/presentation/pages/signupPage.dart';
+import 'package:myapp/mainMenuPage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'core/util/common.dart';
 import 'fetures/users/data/models/userModel.dart';
@@ -68,7 +69,7 @@ class _MyAppState extends State<MyApp> {
 						primary: AppTheme.primaryColor
 					),
 				),
-				home: SignupPage()
+				home: MainMenuPage()
 		);
 	}
 

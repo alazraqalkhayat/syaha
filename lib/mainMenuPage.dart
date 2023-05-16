@@ -1,136 +1,270 @@
-/*
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
-import 'core/app_theme.dart';
-import 'core/widgets/Texts/primaryText.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:shrink_sidemenu/shrink_sidemenu.dart';
 
+import '../../core/app_theme.dart';
+import '../../core/util/ScreenUtil.dart';
+import '../../core/util/common.dart';
+import '../../core/widgets/cachedNetworkImage.dart';
+import 'core/others/constants.dart';
+import 'core/widgets/Texts/primaryText.dart';
+import 'fetures/aboutAppPage.dart';
+import 'fetures/contactUsPage.dart';
+import 'fetures/favorite/presentation/page/favoritePage.dart';
+import 'fetures/home/presentation/page/homePage.dart';
+import 'fetures/search/presentation/page/searchPage.dart';
+import 'fetures/users/data/models/userModel.dart';
 
 class MainMenuPage extends StatefulWidget {
+  int currentIndex;
+
+  MainMenuPage({this.currentIndex = 1});
+
   @override
-  State<MainMenuPage> createState() => _MainMenuPageState();
+  _MainMenuPageState createState() => _MainMenuPageState();
 }
 
 class _MainMenuPageState extends State<MainMenuPage> {
-  // late MotionTabController _tabController;
-  List<String> popupItems = ['الإعدادات', 'من نحن', 'تقييم التطبيق'];
-  int currentIndex = 0;
+  int _counter = 0;
+  bool isOpened = false;
+
+  final GlobalKey<SideMenuState> _sideMenuKey = GlobalKey<SideMenuState>();
+  final GlobalKey<SideMenuState> _endSideMenuKey = GlobalKey<SideMenuState>();
+
+  void _incrementCounter() {
+    setState(() {
+      _counter++;
+    });
+  }
+
+  toggleMenu([bool end = false]) {
+    if (end) {
+      final _state = _endSideMenuKey.currentState!;
+      if (_state.isOpened) {
+        _state.closeSideMenu();
+      } else {
+        _state.openSideMenu();
+      }
+    } else {
+      final _state = _sideMenuKey.currentState!;
+      if (_state.isOpened) {
+        _state.closeSideMenu();
+      } else {
+        _state.openSideMenu();
+      }
+    }
+  }
+
+  UserModel? user;
+
   dynamic screens = [
-    ProfilePage(),
+    FavoritePage(),
     HomePage(),
-    MyOrdersPage(),
+    SearchPage(),
   ];
 
   @override
   void initState() {
+    checkUserLoggedIn().fold((l) {
+      user = l;
+    }, (r) {
+      user = null;
+    });
+
     super.initState();
-    // _tabController =  MotionTabController(initialIndex:1, vsync: null);
   }
 
-  @override
-  void dispose() {
-    super.dispose();
-    // _tabController.dispose();
-  }
+  ScreenUtil screenUtil = ScreenUtil();
+  Widget canner_appDataWidget = Container();
+  bool logoutRequestPending = false;
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: AppTheme.scaffoldBackgroundColor,
-          elevation: 0,
-          centerTitle: true,
-          automaticallyImplyLeading: true,
-          title: PrimaryText(
-            text: currentIndex==0?'البروفايل':currentIndex==1?'الرئيسية':'طلباتي',
-            textStyle:
-                AppTheme.textTheme.headline3,
-          ),
-          leading: PopupMenuButton(
-            icon: Icon(Icons.more_vert, color: Colors.black),
-            itemBuilder: (context) {
-              return popupItems
-                  .map(
-                    (e) => PopupMenuItem(
-                      child: PrimaryText(
-                          text: e, textStyle: AppTheme.textTheme.bodyText1),
-                      value: e,
-                    ),
-                  )
-                  .toList();
-            },
-            onSelected: (item) {
-              int index = popupItems.indexOf(item);
-              switch (index) {
-                case 0:
-                  {
-                    log('trueeee');
-                    break;
-                  }
-                case 1:
-                  {
-                    log('false');
-                    break;
-                  }
-                case 2:
-                  {
-                    log('false');
-                    break;
-                  }
-              }
-            },
+    screenUtil.init(context);
+    return SideMenu(
+      key: _endSideMenuKey,
+      inverse: true,
+      // end side menu
+      background: AppTheme.scaffoldBackgroundColor,
+      type: SideMenuType.slideNRotate,
+      menu: Padding(
+        padding: const EdgeInsets.only(left: 25.0),
+        child: buildMenu(),
+      ),
+
+      onChange: (_isOpened) {
+        setState(() => isOpened = _isOpened);
+      },
+      child: SideMenu(
+        key: _sideMenuKey,
+        menu: buildMenu(),
+        type: SideMenuType.shrikNRotate,
+        radius: BorderRadius.circular(20),
+        inverse: true,
+        onChange: (_isOpened) {
+          setState(() => isOpened = _isOpened);
+        },
+        child: IgnorePointer(
+          ignoring: isOpened,
+          ignoringSemantics: true,
+          child: Scaffold(
+            backgroundColor: AppTheme.scaffoldBackgroundColor,
+
+            appBar: AppBar(
+              backgroundColor: AppTheme.scaffoldBackgroundColor,
+              elevation: 0,
+              centerTitle: true,
+              leading: IconButton(
+                icon: const Icon(
+                  Icons.menu,
+                  color: Colors.black,
+                ),
+                onPressed: () => toggleMenu(true),
+              ),
+            ),
+            body: IndexedStack(
+              index: widget.currentIndex,
+              children: screens,
+            ),
+            bottomNavigationBar: Container(
+              decoration: BoxDecoration(
+                color: Colors.transparent,
+                border: Border(
+                  top: BorderSide(
+                    color: Colors.grey.withOpacity(.1),
+                    width: 1,
+                  ),
+                ),
+              ),
+              child: BottomNavigationBar(
+                elevation: 0.0,
+                type: BottomNavigationBarType.fixed,
+                selectedItemColor: AppTheme.primaryColor,
+                unselectedItemColor: kMyGrey.withOpacity(.6),
+                backgroundColor: Colors.red.withOpacity(0.0),
+                currentIndex: widget.currentIndex,
+                onTap: (index) {
+                  setState(() {
+                    widget.currentIndex = index;
+                  });
+                },
+                items: [
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.home,
+                        color: widget.currentIndex == 0
+                            ? AppTheme.primaryColor
+                            : kMyGrey.withOpacity(.6)),
+                    label: "الرئيسية",
+
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.search,
+                        color: widget.currentIndex == 1
+                            ? AppTheme.primaryColor
+                            : kMyGrey.withOpacity(.6)),
+                    label: 'البحث',
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.favorite,
+                        color: widget.currentIndex == 2
+                            ? AppTheme.primaryColor
+                            : kMyGrey.withOpacity(.6)),
+                    label: "المفضلة",
+
+
+                  ),
+                ],
+              ),
+            ),
           ),
         ),
-        backgroundColor: AppTheme.scaffoldBackgroundColor,
-        body: screens[currentIndex],
-
-        */
-/*bottomNavigationBar: FancyBottomNavigation(
-            initialSelection: 1,
-
-            tabs: [
-              TabData(iconData: Icons.search, title: "Search",),
-              TabData(iconData: Icons.home, title: "Home"),
-              TabData(iconData: Icons.shopping_cart, title: "Basket")
-            ],
-            onTabChangedListener: (position) {
-              setState(() {
-                currentIndex = position;
-              });
-            },
-          )*//*
-
-        */
-/* bottomNavigationBar: MotionTabBar(
-
-          labels: [
-            "Account","Home","Dashboard"
-          ],
-          initialSelectedTab: "Home",
-          tabIconColor: Colors.green,
-          tabSelectedColor: Colors.red,
-          onTabItemSelected: (int value){
-            print(value);
-            setState(() {
-              if(value==2){
-                currentIndex=0;
-              }else if(value==0){
-                currentIndex=2;
-              }else{
-                currentIndex = value;
-
-              }
-            });
-          },
-          icons: [
-            Icons.account_box,Icons.home,Icons.menu
-          ],
-          textStyle: TextStyle(color: Colors.red),
-        ),*//*
-
       ),
     );
   }
+
+  Widget buildMenu() {
+    return SingleChildScrollView(
+        padding: const EdgeInsets.symmetric(vertical: 50.0, horizontal: 30.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Wrap(
+              alignment: WrapAlignment.center,
+              crossAxisAlignment: WrapCrossAlignment.center,
+              children: [
+                Container(
+                  height: screenUtil.orientation == Orientation.portrait
+                      ? screenUtil.screenHeight * .18
+                      : screenUtil.screenWidth / 18,
+                  width: screenUtil.screenWidth * .35,
+                  padding: const EdgeInsets.all(5),
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(20)),
+                  child: user != null
+                      ? ClipRRect(
+                          borderRadius: BorderRadius.circular(20),
+                          child: cachedNetworkImage(image: user?.image ?? ''),
+                        )
+                      : Center(
+
+                        )),
+
+                const SizedBox(
+                  width: 8,
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 40,
+            ),
+            ListTile(
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => ContactUsPage()));
+              },
+              title: PrimaryText(
+                text: 'تواصل معنا',
+                textStyle: AppTheme.textTheme.bodyText1,
+                textAlign: TextAlign.start,
+              ),
+            ),
+            Divider(
+              color: Colors.black,
+            ),
+            ListTile(
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => AboutAppPage()));
+              },
+              title: PrimaryText(
+                text: 'عن التطبيق',
+                textStyle: AppTheme.textTheme.bodyText1,
+                textAlign: TextAlign.start,
+              ),
+            ),
+            Divider(
+              color: Colors.black,
+            ),
+            ListTile(
+              title: PrimaryText(
+                text: 'مشاركة التطبيق',
+                textStyle: AppTheme.textTheme.bodyText1,
+                textAlign: TextAlign.start,
+              ),
+            ),
+            Divider(
+              color: Colors.black,
+            ),
+            ListTile(
+              title: PrimaryText(
+                text: 'الإصدار',
+                textStyle: AppTheme.textTheme.bodyText1,
+                textAlign: TextAlign.start,
+              ),
+            ),
+          ],
+        ));
+  }
 }
-*/
