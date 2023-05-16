@@ -83,6 +83,8 @@ dependencies:
   launch_review: ^3.0.1
   flutter_local_notifications: ^13.0.0
   shrink_sidemenu: ^2.0.0+2-null-safety
+  flutter_rating_bar: ^4.0.1
+  steps: ^1.0.1
 
 
 

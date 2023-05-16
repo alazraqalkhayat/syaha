@@ -88,6 +88,7 @@ class _MainMenuPageState extends State<MainMenuPage> {
       // end side menu
       background: AppTheme.scaffoldBackgroundColor,
       type: SideMenuType.slideNRotate,
+      closeIcon: Icon(Icons.close,color: Colors.black,),
       menu: Padding(
         padding: const EdgeInsets.only(left: 25.0),
         child: buildMenu(),
@@ -110,7 +111,6 @@ class _MainMenuPageState extends State<MainMenuPage> {
           ignoringSemantics: true,
           child: Scaffold(
             backgroundColor: AppTheme.scaffoldBackgroundColor,
-
             appBar: AppBar(
               backgroundColor: AppTheme.scaffoldBackgroundColor,
               elevation: 0,

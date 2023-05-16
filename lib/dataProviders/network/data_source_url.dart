@@ -24,66 +24,6 @@ class DataSourceURL {
   static String createUserInvitationUrl = 'create/user/invitation/url';
 
   ///PROFILE
-  static String getAllProfilePlatforms = 'get/all/profile/platforms';
-  static String getAllNationalities = 'get/all/nationalities';
-  static String getAllIdentificationType = 'get/all/identification/types';
-  static String updateSingleInfo = 'update/single/info';
-  static String getProfileAttachments = 'get/profile/attachments';
-  static String addNewProfileAttachments = 'add/new/profile/attachments';
-  static String deleteProfileAttachments = 'delete/profile/attachments';
-
-  /// MAIN MENU
-  static String getAllAdds = 'get/all/adds';
-  static String getAllProductionsGroups = 'get/all/productions/groups';
-  static String getProductionsGroupsPlatforms =
-      'get/productions/groups/platforms';
-  static String getPlatformsCategories = 'get/platforms/categories';
-
-  ///Charging Requests
-  static String addNewOrder = 'add/new/order';
-  static String checkCopon = 'check/copon';
-  static String getUserChargingRequests = 'get/user/charging/request';
-  static String getCustomersChargingRequests = 'get/customers/charging/request';
-  static String acceptConfirmChargingRequests =
-      'accept/confirm/charging/request';
-
-  ///Wallet
-  static String getCurrencies = 'get/currencies';
-  static String getBanks = 'get/banks';
-  static String feedWalletRequest = 'feed/wallet/request';
-  static String updateFeedWalletRequest = 'update/feed/wallet/request';
-  static String getUserFeedWalletUploadedRequests =
-      'get/user/feed/wallet/requests';
-  static String getCustomerFeedWalletUploadedRequests =
-      'get/customers/feed/wallet/requests';
-
-  static String acceptConfirmNewFeedWalletRequest =
-      'accept/confirm/new/feed/wallet/requests';
-
-  ///platform
-  static String getAllPartnerAccessiblePlatform =
-      'get/all/partner/accessible/platform';
-
-  static String getAllPartnerPlatformsWithBroadcastersCount =
-      'get/all/partner/platforms/with/broadcasters/count';
-
-  ///broadcaster
-  static String addBroadcasterToPartner = 'add/broadcaster/to/partner/request';
-
-  ///partners
-  static String getAllPartners = 'get/all/partners';
-  static String getPartnerBroadcaster = 'get/partner/broadcasters';
-
-  ///ExchangeMoney
-  static String getTransformingDetails = 'get/transforming/details';
-  static String getMyTransfersMoney = 'get/my/exchange/money/processes';
-  static String pushMoney = 'push/money';
-  static String pullMoney = 'pull/money';
-
-  ///notifications
-  static String getUserNotifications = 'get/user/notifications';
-  static String deactivateNotification = 'deactivate/notification';
-
-  ///customer service
-  static String getCustomerServiceData = 'get/customer/service/data';
+  static String getGroups = 'MainGroups/GetMainGroups';
+  static String getMostRatedGroups = 'MainGroups/GetMainGroups/2';
 }

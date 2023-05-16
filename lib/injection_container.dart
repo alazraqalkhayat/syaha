@@ -4,6 +4,8 @@ import 'package:http/http.dart' as http;
 import 'package:myapp/dataProviders/local_data_provider.dart';
 import 'package:myapp/dataProviders/network/Network_info.dart';
 import 'package:myapp/dataProviders/remote_data_provider.dart';
+import 'package:myapp/fetures/home/data/repository/homeRepository.dart';
+import 'package:myapp/fetures/home/presentation/manager/home_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'fetures/users/data/repositories/registrationRepository.dart';
 import 'fetures/users/presentation/manager/registration/registrationBloc.dart';
@@ -17,6 +19,7 @@ Future<void> init() async {
 
 //  ! Features
   _initRegisterFeature();
+  _initHomeFeature();
 
   ///service provider
 
@@ -43,6 +46,19 @@ void _initRegisterFeature() {
   //repositories
   sl.registerLazySingleton<RegistrationRepository>(
         () => RegistrationRepository(
+      remoteDataProvider: sl(),
+      localDataProvider: sl(),
+      networkInfo: sl(),
+    ),
+  );
+
+}
+void _initHomeFeature() {
+//bloc
+  sl.registerFactory(() => HomeBloc(repository: sl()));
+  //repositories
+  sl.registerLazySingleton<HomeRepository>(
+        () => HomeRepository(
       remoteDataProvider: sl(),
       localDataProvider: sl(),
       networkInfo: sl(),
