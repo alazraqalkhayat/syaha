@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myapp/fetures/users/presentation/pages/signupPage.dart';
 import '../../../../core/app_theme.dart';
 import '../../../../core/util/ScreenUtil.dart';
+import '../../../../core/util/common.dart';
 import '../../../../core/widgets/Buttons/primaryButton.dart';
 import '../../../../core/widgets/Others/tapedIcon.dart';
 import '../../../../core/widgets/Texts/TapedText.dart';
@@ -84,20 +85,16 @@ class _LoginPageState extends State<LoginPage> {
           child: BlocConsumer<RegistrationBloc, RegistrationState>(
             listener: (_context, state) {
               if (state is RegisterLoaded) {
-                // commonDialog(context: context, message: state.successMessage,onPressOkButton: (){
-                //   Navigator.pop(context);
-                // });
-                // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>MainMenuPage()));
+                myToast(message: state.successMessage, bkgColor: Colors.green);
+
 
 
                 setState(() {
                   requestPending = false;
                 });
               } else if (state is RegisterError) {
-                // commonDialog(context: context, isSuccess: false, message: state.errorMessage,onPressOkButton: (){
-                //   Navigator.pop(context);
-                //
-                // });
+                myToast(message: state.errorMessage, bkgColor: Colors.red);
+
 
                 setState(() {
                   requestPending = false;

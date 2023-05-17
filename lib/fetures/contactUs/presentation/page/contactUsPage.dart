@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myapp/core/util/ScreenUtil.dart';
 
 import '../../../../core/app_theme.dart';
+import '../../../../core/util/common.dart';
 import '../../../../core/widgets/Buttons/primaryButton.dart';
 import '../../../../core/widgets/Texts/primaryText.dart';
 import '../../../../core/widgets/textFormFields/NormalTextFormField.dart';
@@ -48,7 +49,19 @@ class _ContactUsPageState extends State<ContactUsPage> {
             create: (context) => sl<ContactUsBloc>(),
             child: BlocConsumer<ContactUsBloc, ContactUsState>(
               listener: (_context, state) {
+                if(state is ContactUsLoaded){
+                  myToast(message: state.successMessage, bkgColor: Colors.green);
+                  setState(() {
+                    requestPending=false;
+                  });
+                }
 
+                if(state is ContactUsError){
+                  myToast(message: state.errorMessage, bkgColor: Colors.red);
+                  setState(() {
+                    requestPending=false;
+                  });
+                }
               },
               builder: (_context, state) {
                 return SingleChildScrollView(

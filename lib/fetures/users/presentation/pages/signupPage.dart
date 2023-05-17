@@ -4,6 +4,7 @@ import '../../../../core/app_theme.dart';
 import '../../../../core/others/customDropDownList.dart';
 import '../../../../core/others/itemsModel.dart';
 import '../../../../core/util/ScreenUtil.dart';
+import '../../../../core/util/common.dart';
 import '../../../../core/widgets/Buttons/primaryButton.dart';
 import '../../../../core/widgets/Others/tapedIcon.dart';
 import '../../../../core/widgets/Texts/TapedText.dart';
@@ -92,7 +93,25 @@ class _SignupPageState extends State<SignupPage> {
             child: BlocProvider(
           create: (context) => sl<RegistrationBloc>(),
           child: BlocConsumer<RegistrationBloc, RegistrationState>(
-            listener: (_context, state) {},
+            listener: (_context, state) {
+              if (state is RegisterLoaded) {
+                myToast(message: state.successMessage, bkgColor: Colors.green);
+
+
+
+                setState(() {
+                  requestPending = false;
+                });
+              } else if (state is RegisterError) {
+                myToast(message: state.errorMessage, bkgColor: Colors.red);
+
+
+                setState(() {
+                  requestPending = false;
+                });
+              }
+            },
+
             builder: (_context, state) {
               return SingleChildScrollView(
                 child: Padding(

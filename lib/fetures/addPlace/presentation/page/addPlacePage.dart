@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myapp/core/util/ScreenUtil.dart';
+import 'package:myapp/core/util/common.dart';
 import 'package:myapp/fetures/addPlace/presentation/manager/place_bloc.dart';
 
 import '../../../../core/app_theme.dart';
@@ -148,11 +149,13 @@ class _AddPlacePageState extends State<AddPlacePage> {
                       child: BlocConsumer<PlaceBloc, PlaceState>(
                         listener: (_context, state) {
                           if (state is AddPlaceError) {
+                            myToast(message: state.errorMessage, bkgColor: Colors.red);
 
                           }
 
                           if (state is AddPlaceLoaded) {
                             // Navigator.pop(context);
+                            myToast(message: state.successMessage, bkgColor: Colors.green);
                             log('success is ${state.successMessage}');
                             setState(() {
                               requestPending = false;

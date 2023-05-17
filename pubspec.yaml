@@ -85,6 +85,8 @@ dependencies:
   shrink_sidemenu: ^2.0.0+2-null-safety
   flutter_rating_bar: ^4.0.1
   steps: ^1.0.1
+  fluttertoast: ^8.1.2
+
 
 
 

@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'dart:math';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:dartz/dartz.dart';
@@ -76,24 +77,19 @@ Either<String, bool> checkOnboarding() {
   }
 }
 
-/*
-Either<int, bool> checkCart() {
-  try {
-    final data = LocalDataProvider(sharedPreferences: sl<SharedPreferences>())
-        .getCachedData(
-            key: 'CACHED_CART',
-            retrievedDataType: CartModel.init(),
-            returnType: List) as List;
-
-    if (data != null) {
-      return Left(data.length);
-    }
-    return Right(false);
-  } catch (e) {
-    return Right(false);
-  }
-}*/
-
+Future<void> myToast(
+    {required String message,
+      required Color bkgColor,
+    ToastGravity toastGravity = ToastGravity.CENTER}) async {
+  await Fluttertoast.showToast(
+      msg: message,
+      toastLength: Toast.LENGTH_SHORT,
+      gravity: toastGravity,
+      timeInSecForIosWeb: 1,
+      backgroundColor: bkgColor,
+      textColor: Colors.white,
+      fontSize: 16.0);
+}
 
 void showImagesDialog(BuildContext context, String image) {
   showDialog(
@@ -292,7 +288,6 @@ Future<ImageSource?> showChoseImageSourceBottomSheet({
   );
 }
 
-
 void launchWhatsApp(String phone, String message) async {
   String url() {
     if (Platform.isIOS) {
@@ -351,4 +346,3 @@ openPlayStore() async {
     throw 'Could not launch $url';
   }
 }
-

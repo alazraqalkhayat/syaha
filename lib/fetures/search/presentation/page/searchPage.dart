@@ -17,27 +17,30 @@ class _SearchPageState extends State<SearchPage> {
     return  Scaffold(
       backgroundColor: AppTheme.scaffoldBackgroundColor,
 
-      body: Column(
-        children: [
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 30.0),
+        child: Column(
+          children: [
 
-          NormalTextFormField(
-            hint: "الرسالة",
-            textInputType: TextInputType.text,
-            prefixIcon: Icon(Icons.message_outlined),
-            onChange: (newValue) {
-              key = newValue.trim();
-            },
-            validator: (value) {
-              if (value.toString().isEmpty) {
-                return 'الرجاء تعبئة الحقل';
-              }
+            NormalTextFormField(
+              hint: "أدخل نص البحث",
+              textInputType: TextInputType.text,
+              prefixIcon: Icon(Icons.message_outlined),
+              onChange: (newValue) {
+                key = newValue.trim();
+              },
+              validator: (value) {
+                if (value.toString().isEmpty) {
+                  return 'الرجاء تعبئة الحقل';
+                }
 
-              return null;
-            },
+                return null;
+              },
 
-          ),
+            ),
 
-        ],
+          ],
+        ),
       ),
     );
   }
