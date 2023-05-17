@@ -32,7 +32,7 @@ class ContactUsRepository extends Repository {
       checkConnection: networkInfo.isConnected,
       remoteFunction: () async {
         final remoteData = await remoteDataProvider.sendData(
-            url: DataSourceURL.addPlace,
+            url: DataSourceURL.contactUs,
             retrievedDataType: String,
             returnType: String,
             body: {

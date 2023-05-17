@@ -8,6 +8,8 @@ import 'package:myapp/fetures/addPlace/data/repository/homeRepository.dart';
 import 'package:myapp/fetures/addPlace/presentation/manager/place_bloc.dart';
 import 'package:myapp/fetures/contactUs/data/repository/contactUsRepository.dart';
 import 'package:myapp/fetures/contactUs/presentation/manager/contact_us_bloc.dart';
+import 'package:myapp/fetures/favorite/data/repository/favoriteRepository.dart';
+import 'package:myapp/fetures/favorite/presentation/manager/favorite_bloc.dart';
 import 'package:myapp/fetures/home/data/repository/homeRepository.dart';
 import 'package:myapp/fetures/home/presentation/manager/home_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -26,6 +28,7 @@ Future<void> init() async {
   _initHomeFeature();
   _initPlaceFeature();
   _initContactUsFeature();
+  _initFavoriteFeature();
 
   ///service provider
 
@@ -91,6 +94,19 @@ void _initContactUsFeature() {
   //repositories
   sl.registerLazySingleton<ContactUsRepository>(
         () => ContactUsRepository(
+      remoteDataProvider: sl(),
+      localDataProvider: sl(),
+      networkInfo: sl(),
+    ),
+  );
+
+}
+void _initFavoriteFeature() {
+//bloc
+  sl.registerFactory(() => FavoriteBloc(repository: sl()));
+  //repositories
+  sl.registerLazySingleton<FavoriteRepository>(
+        () => FavoriteRepository(
       remoteDataProvider: sl(),
       localDataProvider: sl(),
       networkInfo: sl(),

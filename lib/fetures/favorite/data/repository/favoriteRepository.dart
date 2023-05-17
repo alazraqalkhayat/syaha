@@ -10,45 +10,32 @@ import '../../../../dataProviders/remote_data_provider.dart';
 import '../../../../dataProviders/repository.dart';
 
 
-class PlaceRepository extends Repository {
+class FavoriteRepository extends Repository {
   final RemoteDataProvider remoteDataProvider; //get the data from the internet
   final LocalDataProvider localDataProvider; //get the data from the local cache
   final NetworkInfo networkInfo; //check if the device is connected to internet
 
-  PlaceRepository({
+  FavoriteRepository({
     required this.remoteDataProvider,
     required this.localDataProvider,
     required this.networkInfo,
   });
 
 
-  Future<Either<Failure, dynamic>> addPlace({
-    required name,
-    required section,
-    required city,
-    required address,
-    required phone,
-    required description,
-    required time,
-    required jop,
-    required image,
+  Future<Either<Failure, dynamic>> getFavorite({
+    required token,
+
+
   }) async {
     return await sendRequest(
       checkConnection: networkInfo.isConnected,
       remoteFunction: () async {
         final remoteData = await remoteDataProvider.sendData(
-            url: DataSourceURL.addPlace,
-            retrievedDataType: String,
+            url: DataSourceURL.favorites,
+            retrievedDataType: GroupsModel.init(),
             returnType: String,
             body: {
-              'name':name,
-              'section':section,
-              'city':city,
-              'address':address,
-              'phone':phone,
-              'description':description,
-              'jop':jop,
-              'image':image
+              'api_token':token,
             });
 
         return remoteData;

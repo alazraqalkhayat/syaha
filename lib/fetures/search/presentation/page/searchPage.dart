@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/app_theme.dart';
+import '../../../../core/widgets/textFormFields/NormalTextFormField.dart';
 
 class SearchPage extends StatefulWidget {
   const SearchPage({Key? key}) : super(key: key);
@@ -10,6 +11,7 @@ class SearchPage extends StatefulWidget {
 }
 
 class _SearchPageState extends State<SearchPage> {
+  late String key;
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
@@ -17,6 +19,23 @@ class _SearchPageState extends State<SearchPage> {
 
       body: Column(
         children: [
+
+          NormalTextFormField(
+            hint: "الرسالة",
+            textInputType: TextInputType.text,
+            prefixIcon: Icon(Icons.message_outlined),
+            onChange: (newValue) {
+              key = newValue.trim();
+            },
+            validator: (value) {
+              if (value.toString().isEmpty) {
+                return 'الرجاء تعبئة الحقل';
+              }
+
+              return null;
+            },
+
+          ),
 
         ],
       ),

@@ -20,7 +20,7 @@ import 'fetures/users/data/models/userModel.dart';
 class MainMenuPage extends StatefulWidget {
   int currentIndex;
 
-  MainMenuPage({this.currentIndex = 1});
+  MainMenuPage({this.currentIndex = 0});
 
   @override
   _MainMenuPageState createState() => _MainMenuPageState();
@@ -60,9 +60,9 @@ class _MainMenuPageState extends State<MainMenuPage> {
   UserModel? user;
 
   dynamic screens = [
-    FavoritePage(),
     HomePage(),
     SearchPage(),
+    FavoritePage(),
   ];
 
   @override
@@ -89,7 +89,10 @@ class _MainMenuPageState extends State<MainMenuPage> {
       // end side menu
       background: AppTheme.scaffoldBackgroundColor,
       type: SideMenuType.slideNRotate,
-      closeIcon: Icon(Icons.close,color: Colors.black,),
+      closeIcon: Icon(
+        Icons.close,
+        color: Colors.black,
+      ),
       menu: Padding(
         padding: const EdgeInsets.only(left: 25.0),
         child: buildMenu(),
@@ -123,11 +126,23 @@ class _MainMenuPageState extends State<MainMenuPage> {
                 ),
                 onPressed: () => toggleMenu(true),
               ),
+              actions: [
+                IconButton(
+                  icon: const Icon(
+                    Icons.notification_add_rounded,
+                    color: Colors.black,
+                  ),
+                  onPressed: (){
+                    _bottomSheet();
+                  },
+                ),
+              ],
             ),
-            body: IndexedStack(
-              index: widget.currentIndex,
-              children: screens,
-            ),
+            body: screens[widget.currentIndex],
+            // body: IndexedStack(
+            //   index: widget.currentIndex,
+            //   children: ,
+            // ),
             bottomNavigationBar: Container(
               decoration: BoxDecoration(
                 color: Colors.transparent,
@@ -157,7 +172,6 @@ class _MainMenuPageState extends State<MainMenuPage> {
                             ? AppTheme.primaryColor
                             : kMyGrey.withOpacity(.6)),
                     label: "الرئيسية",
-
                   ),
                   BottomNavigationBarItem(
                     icon: Icon(Icons.search,
@@ -172,8 +186,6 @@ class _MainMenuPageState extends State<MainMenuPage> {
                             ? AppTheme.primaryColor
                             : kMyGrey.withOpacity(.6)),
                     label: "المفضلة",
-
-
                   ),
                 ],
               ),
@@ -195,23 +207,20 @@ class _MainMenuPageState extends State<MainMenuPage> {
               crossAxisAlignment: WrapCrossAlignment.center,
               children: [
                 Container(
-                  height: screenUtil.orientation == Orientation.portrait
-                      ? screenUtil.screenHeight * .18
-                      : screenUtil.screenWidth / 18,
-                  width: screenUtil.screenWidth * .35,
-                  padding: const EdgeInsets.all(5),
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(20)),
-                  child: user != null
-                      ? ClipRRect(
-                          borderRadius: BorderRadius.circular(20),
-                          child: cachedNetworkImage(image: user?.image ?? ''),
-                        )
-                      : Center(
-
-                        )),
-
+                    height: screenUtil.orientation == Orientation.portrait
+                        ? screenUtil.screenHeight * .18
+                        : screenUtil.screenWidth / 18,
+                    width: screenUtil.screenWidth * .35,
+                    padding: const EdgeInsets.all(5),
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(20)),
+                    child: user != null
+                        ? ClipRRect(
+                            borderRadius: BorderRadius.circular(20),
+                            child: cachedNetworkImage(image: user?.image ?? ''),
+                          )
+                        : Center()),
                 const SizedBox(
                   width: 8,
                 ),
@@ -234,7 +243,6 @@ class _MainMenuPageState extends State<MainMenuPage> {
             Divider(
               color: Colors.black,
             ),
-
             ListTile(
               onTap: () {
                 Navigator.push(context,
@@ -282,5 +290,73 @@ class _MainMenuPageState extends State<MainMenuPage> {
             ),
           ],
         ));
+  }
+
+  _bottomSheet() {
+    showModalBottomSheet(
+        context: context,
+        barrierColor: AppTheme.appContainersTextColor,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20.0),
+        ),
+        builder: (BuildContext context) {
+          return SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.only(bottom: 8.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  PrimaryText(
+                    text: 'الإشعارات',
+                    textStyle: AppTheme.textTheme.bodyText1,
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+
+                  ListTile(
+                    title:PrimaryText(
+                      text: 'قم الآن بتحديث التطبيق الى آخر إصدار',
+                      textStyle: AppTheme.textTheme.bodyText1,
+                      textAlign: TextAlign.start,
+                    ),
+                    leading: Icon(Icons.notification_add_outlined,color: AppTheme.primarySwatch.shade500,),
+                  ),
+
+                  Divider(
+                    color: Colors.black,
+                  ),
+
+                  ListTile(
+                    title:PrimaryText(
+                      text: 'الآن فندق البستان - صنعاء يقدم خصومات نهاية العام',
+                      textStyle: AppTheme.textTheme.bodyText1,
+                      textAlign: TextAlign.start,
+                    ),
+                    leading: Icon(Icons.notification_add_outlined,color: AppTheme.primarySwatch.shade500,),
+                  ),
+
+                  Divider(
+                    color: Colors.black,
+                  ),
+
+                  ListTile(
+                    title:PrimaryText(
+                      text: 'تخفيضات تصل الى 50 بالميه في مطاعم الشيباني 😍',
+                      textStyle: AppTheme.textTheme.bodyText1,
+                      textAlign: TextAlign.start,
+                    ),
+                    leading: Icon(Icons.notification_add_outlined,color: AppTheme.primarySwatch.shade500,),
+                  ),
+
+                  Divider(
+                    color: Colors.black,
+                  ),
+                ],
+              ),
+            ),
+          );
+        });
   }
 }

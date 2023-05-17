@@ -27,4 +27,7 @@ class DataSourceURL {
   static String getGroups = 'MainGroups/GetMainGroups';
   static String getMostRatedGroups = 'MainGroups/GetMainGroups/2';
   static String addPlace = 'AddPlaces/GetAddPlaces';
+  static String contactUs = 'Compnies/GetCompnies';
+  static String favorites = 'favorites/Getfavorites';
+  static String search = 'favorites/Getfavorites';
 }

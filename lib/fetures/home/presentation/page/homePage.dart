@@ -7,6 +7,7 @@ import 'package:myapp/fetures/home/presentation/widget/groupsWidget.dart';
 import 'package:shimmer/shimmer.dart';
 
 import '../../../../core/app_theme.dart';
+import '../../../../core/widgets/Others/customErrorWidget.dart';
 import '../../../../injection_container.dart';
 import '../widget/SliderWidget.dart';
 import '../widget/mostRatedGroupsWidget.dart';
@@ -109,6 +110,14 @@ class _HomePageState extends State<HomePage> {
                             }),
                       );
                     }
+
+                    if(state is HomeError){
+                      return Center(
+                        child: CustomErrorWidget(
+                          message: state.errrosMessage,
+                        ),
+                      );
+                    }
                     return Container();
                   },
                 ),
@@ -180,6 +189,14 @@ class _HomePageState extends State<HomePage> {
                                 rate: state.model[index].rate as double,
                               );
                             }),
+                      );
+                    }
+
+                    if(state is HomeError){
+                      return Center(
+                        child: CustomErrorWidget(
+                          message: state.errrosMessage,
+                        ),
                       );
                     }
                     return Container();
