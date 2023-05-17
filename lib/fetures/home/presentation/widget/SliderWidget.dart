@@ -64,7 +64,7 @@ class _SliderWidgetState extends State<SliderWidget> {
                             child: ClipRRect(
                                 borderRadius: BorderRadius.circular(20),
                                 // child: cachedNetworkImage(image: imagesPaths[index]),
-                                child: cachedNetworkImage(image: widget.imagesPaths[index])
+                                child: Image.asset('assets/'+widget.imagesPaths[index]+'.jpg')
                             ),
                           )
                       );
@@ -81,7 +81,6 @@ class _SliderWidgetState extends State<SliderWidget> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-
               TapedIcon(
                 icon: Icons.arrow_back_ios, color: Colors.black,
                 onTap: (){

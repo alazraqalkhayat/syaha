@@ -21,11 +21,21 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List<String> images = [
-    'https://www.google.com/url?sa=i&url=https%3A%2F%2Fmawdoo3.com%2F%25D8%25AC%25D8%25B2%25D8%25B1_%25D8%25A7%25D9%2584%25D8%25A8%25D8%25AD%25D8%25B1_%25D8%25A7%25D9%2584%25D8%25A3%25D8%25AD%25D9%2585%25D8%25B1&psig=AOvVaw0N443pWzDRrp0uzBmZbUhi&ust=1684334046564000&source=images&cd=vfe&ved=0CA4QjRxqFwoTCIC6xsGH-v4CFQAAAAAdAAAAABAE',
-    'https://www.google.com/url?sa=i&url=https%3A%2F%2Fmawdoo3.com%2F%25D8%25AC%25D8%25B2%25D8%25B1_%25D8%25A7%25D9%2584%25D8%25A8%25D8%25AD%25D8%25B1_%25D8%25A7%25D9%2584%25D8%25A3%25D8%25AD%25D9%2585%25D8%25B1&psig=AOvVaw0N443pWzDRrp0uzBmZbUhi&ust=1684334046564000&source=images&cd=vfe&ved=0CA4QjRxqFwoTCIC6xsGH-v4CFQAAAAAdAAAAABAE'
+    '1',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    '7',
+    '8',
+    '9',
+    '10',
+    '11',
+    '12',
   ];
 
-  ScreenUtil screenUtil=ScreenUtil();
+  ScreenUtil screenUtil = ScreenUtil();
 
   @override
   Widget build(BuildContext context) {
@@ -50,22 +60,18 @@ class _HomePageState extends State<HomePage> {
               SizedBox(
                 height: 20,
               ),
-
-
               BlocProvider(
-                create: (context)=>sl<HomeBloc>(),
-                child: BlocConsumer<HomeBloc,HomeState>(
-                  listener: (_context,state){
-
-                  },
-                  builder: (_context,state){
-                    if(state is HomeInitial){
+                create: (context) => sl<HomeBloc>(),
+                child: BlocConsumer<HomeBloc, HomeState>(
+                  listener: (_context, state) {},
+                  builder: (_context, state) {
+                    if (state is HomeInitial) {
                       BlocProvider.of<HomeBloc>(_context).add(GetHomeGroups());
                     }
 
-                    if(state is HomeLoading){
+                    if (state is HomeLoading) {
                       return SizedBox(
-                        height: screenUtil.screenHeight*.15,
+                        height: screenUtil.screenHeight * .15,
                         child: ListView.builder(
                             shrinkWrap: true,
                             physics: ClampingScrollPhysics(),
@@ -74,29 +80,28 @@ class _HomePageState extends State<HomePage> {
                             itemBuilder: (_, index) {
                               return Shimmer.fromColors(
                                 baseColor: Colors.black.withOpacity(0.04),
-                                highlightColor:
-                                AppTheme.scaffoldBackgroundColor.withOpacity(.1),
+                                highlightColor: AppTheme.scaffoldBackgroundColor
+                                    .withOpacity(.1),
                                 enabled: true,
                                 child: Container(
                                   margin: EdgeInsets.symmetric(horizontal: 10),
-                                  height: screenUtil.screenHeight*.15,
-                                  width: screenUtil.screenWidth*.3,
+                                  height: screenUtil.screenHeight * .15,
+                                  width: screenUtil.screenWidth * .3,
                                   decoration: BoxDecoration(
                                     color: Colors.black,
-
                                     borderRadius: BorderRadius.circular(20),
                                   ),
-                                  child: ClipRRect(borderRadius: BorderRadius.circular(20)),
+                                  child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(20)),
                                 ),
                               );
                             }),
                       );
                     }
 
-                    if(state is HomeLoaded){
+                    if (state is HomeLoaded) {
                       return SizedBox(
-                        height: screenUtil.screenHeight*.15,
-
+                        height: screenUtil.screenHeight * .15,
                         child: ListView.builder(
                             shrinkWrap: true,
                             physics: ClampingScrollPhysics(),
@@ -111,7 +116,7 @@ class _HomePageState extends State<HomePage> {
                       );
                     }
 
-                    if(state is HomeError){
+                    if (state is HomeError) {
                       return Center(
                         child: CustomErrorWidget(
                           message: state.errrosMessage,
@@ -122,7 +127,6 @@ class _HomePageState extends State<HomePage> {
                   },
                 ),
               ),
-
               PrimaryText(
                 text: 'الأكثر تقييما',
                 textStyle: AppTheme.textTheme.bodyText1,
@@ -131,21 +135,19 @@ class _HomePageState extends State<HomePage> {
               SizedBox(
                 height: 20,
               ),
-
               BlocProvider(
-                create: (context)=>sl<HomeBloc>(),
-                child: BlocConsumer<HomeBloc,HomeState>(
-                  listener: (_context,state){
-
-                  },
-                  builder: (_context,state){
-                    if(state is HomeInitial){
-                      BlocProvider.of<HomeBloc>(_context).add(GetHomeMostRatedGroups());
+                create: (context) => sl<HomeBloc>(),
+                child: BlocConsumer<HomeBloc, HomeState>(
+                  listener: (_context, state) {},
+                  builder: (_context, state) {
+                    if (state is HomeInitial) {
+                      BlocProvider.of<HomeBloc>(_context)
+                          .add(GetHomeMostRatedGroups());
                     }
 
-                    if(state is HomeLoading){
+                    if (state is HomeLoading) {
                       return SizedBox(
-                        height: screenUtil.screenHeight*.15,
+                        height: screenUtil.screenHeight * .15,
                         child: ListView.builder(
                             shrinkWrap: true,
                             physics: ClampingScrollPhysics(),
@@ -154,29 +156,28 @@ class _HomePageState extends State<HomePage> {
                             itemBuilder: (_, index) {
                               return Shimmer.fromColors(
                                 baseColor: Colors.black.withOpacity(0.04),
-                                highlightColor:
-                                AppTheme.scaffoldBackgroundColor.withOpacity(.1),
+                                highlightColor: AppTheme.scaffoldBackgroundColor
+                                    .withOpacity(.1),
                                 enabled: true,
                                 child: Container(
                                   margin: EdgeInsets.symmetric(horizontal: 10),
-                                  height: screenUtil.screenHeight*.15,
-                                  width: screenUtil.screenWidth*.3,
+                                  height: screenUtil.screenHeight * .15,
+                                  width: screenUtil.screenWidth * .3,
                                   decoration: BoxDecoration(
                                     color: Colors.black,
-
                                     borderRadius: BorderRadius.circular(20),
                                   ),
-                                  child: ClipRRect(borderRadius: BorderRadius.circular(20)),
+                                  child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(20)),
                                 ),
                               );
                             }),
                       );
                     }
 
-                    if(state is HomeLoaded){
+                    if (state is HomeLoaded) {
                       return SizedBox(
                         height: screenUtil.screenHeight * .2,
-
                         child: ListView.builder(
                             shrinkWrap: true,
                             physics: ClampingScrollPhysics(),
@@ -192,7 +193,7 @@ class _HomePageState extends State<HomePage> {
                       );
                     }
 
-                    if(state is HomeError){
+                    if (state is HomeError) {
                       return Center(
                         child: CustomErrorWidget(
                           message: state.errrosMessage,
@@ -203,7 +204,6 @@ class _HomePageState extends State<HomePage> {
                   },
                 ),
               ),
-
             ],
           ),
         ),

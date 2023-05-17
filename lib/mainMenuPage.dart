@@ -14,6 +14,7 @@ import 'fetures/aboutAppPage.dart';
 import 'fetures/contactUs/presentation/page/contactUsPage.dart';
 import 'fetures/favorite/presentation/page/favoritePage.dart';
 import 'fetures/home/presentation/page/homePage.dart';
+import 'fetures/location.dart';
 import 'fetures/search/presentation/page/searchPage.dart';
 import 'fetures/users/data/models/userModel.dart';
 
@@ -61,6 +62,7 @@ class _MainMenuPageState extends State<MainMenuPage> {
 
   dynamic screens = [
     HomePage(),
+    LocationPage(),
     SearchPage(),
     FavoritePage(),
   ];
@@ -174,15 +176,22 @@ class _MainMenuPageState extends State<MainMenuPage> {
                     label: "الرئيسية",
                   ),
                   BottomNavigationBarItem(
-                    icon: Icon(Icons.search,
+                    icon: Icon(Icons.location_on_outlined,
                         color: widget.currentIndex == 1
+                            ? AppTheme.primaryColor
+                            : kMyGrey.withOpacity(.6)),
+                    label: "المواقع",
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.search,
+                        color: widget.currentIndex == 2
                             ? AppTheme.primaryColor
                             : kMyGrey.withOpacity(.6)),
                     label: 'البحث',
                   ),
                   BottomNavigationBarItem(
                     icon: Icon(Icons.favorite,
-                        color: widget.currentIndex == 2
+                        color: widget.currentIndex == 3
                             ? AppTheme.primaryColor
                             : kMyGrey.withOpacity(.6)),
                     label: "المفضلة",

@@ -2,8 +2,8 @@ class DataSourceURL {
   // static String baseUrl = 'https://app.top1ive.com/api/';
   // static String baseImagesUrl = 'https://app.top1ive.com/';
 
-  static String baseUrl = 'http://192.168.2.112/api/';
-  static String baseImagesUrl = 'http://192.168.2.112/';
+  static String baseUrl = 'http://192.168.0.80/api/';
+  static String baseImagesUrl = 'http://192.168.0.80/';
 
   ///necessary
   static String checkExistAccount = 'check/exist/account';
