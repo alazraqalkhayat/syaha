@@ -27,6 +27,9 @@ class AboutAppPage extends StatelessWidget {
       body: Column(
         children: [
 
+          Image.asset('assets/logo.jpg'),
+          
+          PrimaryText(text: 'تطبيق الكتروني خدمي لتحديد المعالم السياحية والترفيه في الجمهوريه اليمنية حيث أنه عبارة عن تطبيق يمكن الزوار من التعرف على جميع الأماكن التي بإمكان الزائر زيارتها والتعرف عليها والإستمتاع بها في الجمهورية اليمنية ', textStyle: AppTheme.textTheme.bodyText1),
         ],
       ),
     );

@@ -105,28 +105,7 @@ class _SignupPageState extends State<SignupPage> {
                         key: _signupFormKey,
                         child: Column(
                           children: [
-                            NormalTextFormField(
-                              hint: "إسم المستخدم",
-                              prefixIcon: Icon(Icons.person_outline_outlined),
-                              autofocus: true,
-                              onChange: (newValue) {
-                                userName = newValue.trim();
-                              },
-                              validator: (value) {
-                                if (value.toString().isEmpty) {
-                                  return 'الرجاء تعبئة الحقل';
-                                }
 
-                                return null;
-                              },
-                              onFieldSubmitted: (value) {
-                                FocusScope.of(context)
-                                    .requestFocus(phoneFocusNode);
-                              },
-                            ),
-                            SizedBox(
-                              height: 20,
-                            ),
 
                             NormalTextFormField(
                               hint: "رقم الهاتف",

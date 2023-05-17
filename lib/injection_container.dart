@@ -4,6 +4,10 @@ import 'package:http/http.dart' as http;
 import 'package:myapp/dataProviders/local_data_provider.dart';
 import 'package:myapp/dataProviders/network/Network_info.dart';
 import 'package:myapp/dataProviders/remote_data_provider.dart';
+import 'package:myapp/fetures/addPlace/data/repository/homeRepository.dart';
+import 'package:myapp/fetures/addPlace/presentation/manager/place_bloc.dart';
+import 'package:myapp/fetures/contactUs/data/repository/contactUsRepository.dart';
+import 'package:myapp/fetures/contactUs/presentation/manager/contact_us_bloc.dart';
 import 'package:myapp/fetures/home/data/repository/homeRepository.dart';
 import 'package:myapp/fetures/home/presentation/manager/home_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -20,6 +24,8 @@ Future<void> init() async {
 //  ! Features
   _initRegisterFeature();
   _initHomeFeature();
+  _initPlaceFeature();
+  _initContactUsFeature();
 
   ///service provider
 
@@ -59,6 +65,32 @@ void _initHomeFeature() {
   //repositories
   sl.registerLazySingleton<HomeRepository>(
         () => HomeRepository(
+      remoteDataProvider: sl(),
+      localDataProvider: sl(),
+      networkInfo: sl(),
+    ),
+  );
+
+}
+void _initPlaceFeature() {
+//bloc
+  sl.registerFactory(() => PlaceBloc(repository: sl()));
+  //repositories
+  sl.registerLazySingleton<PlaceRepository>(
+        () => PlaceRepository(
+      remoteDataProvider: sl(),
+      localDataProvider: sl(),
+      networkInfo: sl(),
+    ),
+  );
+
+}
+void _initContactUsFeature() {
+//bloc
+  sl.registerFactory(() => ContactUsBloc(repository: sl()));
+  //repositories
+  sl.registerLazySingleton<ContactUsRepository>(
+        () => ContactUsRepository(
       remoteDataProvider: sl(),
       localDataProvider: sl(),
       networkInfo: sl(),

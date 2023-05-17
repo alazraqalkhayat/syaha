@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:myapp/fetures/addPlace/presentation/page/addPlacePage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shrink_sidemenu/shrink_sidemenu.dart';
 
@@ -10,7 +11,7 @@ import '../../core/widgets/cachedNetworkImage.dart';
 import 'core/others/constants.dart';
 import 'core/widgets/Texts/primaryText.dart';
 import 'fetures/aboutAppPage.dart';
-import 'fetures/contactUsPage.dart';
+import 'fetures/contactUs/presentation/page/contactUsPage.dart';
 import 'fetures/favorite/presentation/page/favoritePage.dart';
 import 'fetures/home/presentation/page/homePage.dart';
 import 'fetures/search/presentation/page/searchPage.dart';
@@ -219,6 +220,21 @@ class _MainMenuPageState extends State<MainMenuPage> {
             const SizedBox(
               height: 40,
             ),
+            ListTile(
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => AddPlacePage()));
+              },
+              title: PrimaryText(
+                text: 'أضف مكان',
+                textStyle: AppTheme.textTheme.bodyText1,
+                textAlign: TextAlign.start,
+              ),
+            ),
+            Divider(
+              color: Colors.black,
+            ),
+
             ListTile(
               onTap: () {
                 Navigator.push(context,

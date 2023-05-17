@@ -26,4 +26,5 @@ class DataSourceURL {
   ///PROFILE
   static String getGroups = 'MainGroups/GetMainGroups';
   static String getMostRatedGroups = 'MainGroups/GetMainGroups/2';
+  static String addPlace = 'AddPlaces/GetAddPlaces';
 }
